@@ -1,0 +1,84 @@
+.headline-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+
+  .headline-card {
+    background-color: #f4f4f9; // Soft background color
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .headline-content {
+      padding: 1rem;
+
+      .headline-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #2c3e50; // Darker color for better contrast
+        text-decoration: none;
+
+        &:hover {
+          color: #2980b9; // New hover color for title
+          text-decoration: underline;
+        }
+      }
+
+      .headline-description {
+        font-size: 0.9rem;
+        color: #7f8c8d; // Lighter text color for description
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .headline-card-container {
+    grid-template-columns: 1fr; // Single column layout for smaller screens
+    padding: 0.5rem;
+  }
+
+  .headline-card {
+    margin: 0 auto; // Center cards
+  }
+}
+
+.headlines-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+
+  h1 {
+    text-align: center;
+    color: #2980b9; // Matching color with hover effect
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+  }
+}
