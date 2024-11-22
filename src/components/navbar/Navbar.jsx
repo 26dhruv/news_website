@@ -10,8 +10,8 @@ const Navbar = () => {
 
   const menuItems = [
     { href: "/", label: "Home" },
-    { href: "/world", label: "World" },
-    { href: "/politics", label: "Politics" },
+    { href: "/business", label: "business" },
+    { href: "/technology", label: "technology" },
     { href: "/sports", label: "Sports" },
     { href: "/entertainment", label: "Entertainment" },
     { href: "/contact", label: "Contact" },
