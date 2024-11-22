@@ -1,0 +1,41 @@
+:root {
+  // Light theme
+  --background-color: #ffffff;
+  --light-card-bg: #ffffff;
+  --light-border: #e0e0e0;
+  --light-text: #2c3e50;
+  --light-secondary-text: #7f8c8d;
+  --light-muted-text: #90a4ae;
+  // Dark theme
+  --dark-background: #121212;
+  --dark-card-bg: #1e1e1e;
+  --dark-border: #333333;
+  --dark-text: #e0e0e0;
+  --dark-secondary-text: #b0b0b0;
+  --dark-muted-text: #808080;
+  // Transitions
+  --transition-speed: 0.2s;
+}
+
+// Apply theme changes to body or html
+body,
+html {
+  background-color: var(--background-color);
+  color: var(--light-text);
+  transition: background-color var(--transition-speed) ease;
+}
+
+// Dark theme overrides
+[data-theme="dark"] {
+  body,
+  html {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+  }
+  --background-color: var(--dark-background);
+  --light-card-bg: var(--dark-card-bg);
+  --light-border: var(--dark-border);
+  --light-text: var(--dark-text);
+  --light-secondary-text: var(--dark-secondary-text);
+  --light-muted-text: var(--dark-muted-text);
+}

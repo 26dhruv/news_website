@@ -1,22 +1,12 @@
-// src/pages/Home.jsx
-import { useEffect } from "react";
-import { useTheme } from "../context/ThemeContext";
-import HeadLines from "../components/home/headlines";
+import NewsContainer from "../components/news/NewsContainer";
 import withNavbar from "../hoc/withNavbar";
-import "../scss/global.scss";
-
 function Home() {
-  const { isDarkMode } = useTheme();
-
-  useEffect(() => {
-    document.title = "Home";
-  }, []);
-
   return (
-    <div className={`main-content ${isDarkMode ? "dark" : ""}`}>
-      <HeadLines />
-    </div>
+    <NewsContainer
+      title="Top Headlines"
+      endpoint="/top-headlines"
+      params={{ country: "US" }}
+    />
   );
 }
-
 export default withNavbar(Home);
