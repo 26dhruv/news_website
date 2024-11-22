@@ -1,0 +1,33 @@
+:root {
+  // Light theme variables
+  --background-color: #ffffff;
+  --text-color: #2c3e50;
+  --secondary-text: #7f8c8d;
+
+  // Animation
+  --transition-speed: 0.2s;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #e5e7eb;
+  --secondary-text: #9ca3af;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+}
+
+// Add top padding to account for fixed navbar
+.main-content {
+  padding-top: 64px; // Should match navbar height
+  min-height: 100vh;
+  background-color: var(--background-color);
+  transition: background-color var(--transition-speed) ease;
+}

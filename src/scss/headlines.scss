@@ -1,23 +1,115 @@
+$light-bg: #f8f9fa;
+$light-card-bg: #fff;
+$light-text: #2c3e50;
+$light-description: #7f8c8d;
+$light-border: #ddd;
+$light-title: #007bff;
+$light-shadow: rgba(0, 0, 0, 0.1);
+$light-hover-shadow: rgba(0, 0, 0, 0.15);
+
+$dark-bg: #1a1a1a;
+$dark-card-bg: #2d2d2d;
+$dark-text: #e5e7eb;
+$dark-description: #9ca3af;
+$dark-border: #404040;
+$dark-title: #60a5fa;
+$dark-shadow: rgba(0, 0, 0, 0.3);
+$dark-hover-shadow: rgba(0, 0, 0, 0.4);
+
+$transition-speed: 0.2s;
+
+.headlines-container {
+  padding: 2rem;
+  background-color: $light-bg;
+  transition:
+    background-color $transition-speed ease,
+    color $transition-speed ease;
+
+  &.dark {
+    background-color: $dark-bg;
+
+    h1 {
+      color: $dark-title;
+    }
+
+    p {
+      color: $dark-text;
+    }
+
+    .error-message {
+      color: #ef4444;
+    }
+
+    .loading-message {
+      color: $dark-text;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    color: $light-title;
+    margin-bottom: 1.5rem;
+    transition: color $transition-speed ease;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1rem;
+    color: $light-text;
+    transition: color $transition-speed ease;
+  }
+}
+
 .headline-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
 
+  &.dark .headline-card {
+    background-color: $dark-card-bg;
+    border-color: $dark-border;
+    box-shadow: 0 4px 6px $dark-shadow;
+
+    &:hover {
+      box-shadow: 0 8px 12px $dark-hover-shadow;
+    }
+
+    .headline-content {
+      .headline-title {
+        color: $dark-title;
+
+        &:hover {
+          color: lighten($dark-title, 10%);
+        }
+      }
+
+      .headline-description {
+        color: $dark-description;
+      }
+
+      .read-more {
+        color: $dark-title;
+      }
+    }
+  }
+
   .headline-card {
-    background-color: #f4f4f9; // Soft background color
-    border: 1px solid #ddd;
+    background-color: $light-card-bg;
+    border: 1px solid $light-border;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px $light-shadow;
     overflow: hidden;
     cursor: pointer;
     transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
+      transform $transition-speed ease,
+      box-shadow $transition-speed ease,
+      background-color $transition-speed ease,
+      border-color $transition-speed ease;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 12px $light-hover-shadow;
     }
 
     img {
@@ -25,7 +117,7 @@
       height: auto;
       max-height: 200px;
       object-fit: cover;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid $light-border;
     }
 
     .headline-content {
@@ -35,50 +127,47 @@
         font-size: 1.1rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: #2c3e50; // Darker color for better contrast
+        color: $light-title;
         text-decoration: none;
+        transition: color $transition-speed ease;
 
         &:hover {
-          color: #2980b9; // New hover color for title
+          color: darken($light-title, 10%);
           text-decoration: underline;
         }
       }
 
       .headline-description {
         font-size: 0.9rem;
-        color: #7f8c8d; // Lighter text color for description
+        color: $light-description;
         line-height: 1.4;
         margin-bottom: 1rem;
+        transition: color $transition-speed ease;
+      }
+
+      .read-more {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: $light-title;
+        text-decoration: none;
+        transition: color $transition-speed ease;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
 }
 
-// Media queries for responsiveness
 @media (max-width: 768px) {
   .headline-card-container {
-    grid-template-columns: 1fr; // Single column layout for smaller screens
+    grid-template-columns: 1fr;
     padding: 0.5rem;
   }
 
   .headline-card {
-    margin: 0 auto; // Center cards
-  }
-}
-
-.headlines-container {
-  padding: 2rem;
-  background-color: #f8f9fa;
-
-  h1 {
-    text-align: center;
-    color: #2980b9; // Matching color with hover effect
-    margin-bottom: 1.5rem;
-  }
-
-  p {
-    text-align: center;
-    font-size: 1rem;
-    color: #555;
+    margin: 0 auto;
   }
 }

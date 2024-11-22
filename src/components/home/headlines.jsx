@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import axiosInstance from "../../api/interceptor";
 import HeadlineCard from "./headlinescard";
-import "@/scss/headlines.scss"; // Use alias if configured
+import "@/scss/headlines.scss";
 
 export default function Headlines() {
   const [headlines, setHeadlines] = useState([]);
   const [error, setError] = useState(null);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     axiosInstance
@@ -19,13 +21,13 @@ export default function Headlines() {
   }, []);
 
   return (
-    <div className="headlines-container">
+    <div className={`headlines-container ${isDarkMode ? "dark" : ""}`}>
       <h1>Top Headlines</h1>
-      {error && <p style={{ color: "red" }}>Error: {error}</p>}
+      {error && <p className="error-message">Error: {error}</p>}
       {headlines.length > 0 ? (
         <HeadlineCard articles={headlines} />
       ) : (
-        <p>Loading headlines...</p>
+        <p className="loading-message">Loading headlines...</p>
       )}
     </div>
   );

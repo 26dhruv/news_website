@@ -1,8 +1,11 @@
+import { useTheme } from "../../context/ThemeContext";
 import "../../scss/headlines.scss";
 
 const HeadlineCard = ({ articles }) => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <div className="headline-card-container">
+    <div className={`headline-card-container ${isDarkMode ? "dark" : ""}`}>
       {articles.map((article, index) => (
         <a
           href={article.url}

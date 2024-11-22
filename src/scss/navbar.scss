@@ -1,0 +1,175 @@
+// navbar.scss
+$primary-color: #3b82f6;
+$text-color: #4b5563;
+$hover-bg: #f3f4f6;
+$white: #ffffff;
+$dark-bg: #1a1a1a;
+$dark-text: #e5e7eb;
+$dark-hover: #2d2d2d;
+$breakpoint-md: 768px;
+$transition-speed: 0.2s;
+$navbar-height: 64px;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: $white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color $transition-speed ease,
+    color $transition-speed ease;
+
+  // Dark theme styles
+  &.dark {
+    background-color: $dark-bg;
+    color: $dark-text;
+
+    .navbar__logo a {
+      color: $primary-color;
+    }
+
+    .navbar__link,
+    .navbar__mobile-link {
+      color: $dark-text;
+
+      &:hover {
+        color: $primary-color;
+        background-color: $dark-hover;
+      }
+    }
+
+    .navbar__toggle,
+    .navbar__theme-toggle {
+      &:hover {
+        background-color: $dark-hover;
+      }
+    }
+
+    .navbar__icon {
+      color: $dark-text;
+    }
+
+    .navbar__mobile-menu {
+      background-color: $dark-bg;
+    }
+  }
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    @media (min-width: $breakpoint-md) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $navbar-height;
+  }
+
+  &__logo {
+    a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      text-decoration: none;
+      transition: color $transition-speed ease;
+      &:hover {
+        color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all $transition-speed ease;
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-bg;
+    }
+  }
+
+  &__mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__toggle,
+  &__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color $transition-speed ease;
+
+    &:hover {
+      background-color: $hover-bg;
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $text-color;
+  }
+
+  &__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    padding: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-speed ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    &.is-open {
+      max-height: 100vh;
+    }
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__mobile-link {
+    color: $text-color;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    transition: all $transition-speed ease;
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-bg;
+    }
+  }
+}
