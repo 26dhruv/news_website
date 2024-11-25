@@ -8,5 +8,6 @@ export default defineConfig({
     alias: {
       "@": "/src", // Alias for the src directory
     },
+    base: "/news_website",
   },
 });
